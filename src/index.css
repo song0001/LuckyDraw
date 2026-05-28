@@ -118,3 +118,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    transform: translateY(20vh) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.1) rotate(360deg);
+    opacity: 0;
+  }
+}
