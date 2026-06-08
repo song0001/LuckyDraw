@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLotteryStore } from "@/store/useStore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -73,6 +73,7 @@ export default function AdminPage() {
   const [countInput, setCountInput] = useState("1");
   const [deptSearch, setDeptSearch] = useState("");
   const [deptPopoverOpen, setDeptPopoverOpen] = useState(false);
+  const deptSelectLockRef = useRef(false);
 
   // Settings Form State
   const [settingsForm, setSettingsForm] = useState({
@@ -1065,7 +1066,7 @@ export default function AdminPage() {
                     <div className="border rounded-lg p-3 space-y-2">
                       <div className="flex items-center justify-between">
                         <Label className="text-sm font-semibold">部门配额</Label>
-                        <span className="text-xs text-muted-foreground">设置后该部门恰好中指定人数</span>
+                        <span className="text-xs text-muted-foreground">设置后，该部门将获得指定名额</span>
                       </div>
 
                       {/* 已添加的部门 */}
@@ -1118,7 +1119,7 @@ export default function AdminPage() {
                               <Plus className="w-3.5 h-3.5" /> 添加部门
                             </button>
                           </PopoverTrigger>
-                          <PopoverContent className="w-[260px] p-2" align="start">
+                          <PopoverContent className="w-[260px] p-2" align="start" onWheel={e => e.stopPropagation()}>
                             <Input
                               placeholder="搜索部门..."
                               className="h-8 mb-2"
@@ -1126,7 +1127,7 @@ export default function AdminPage() {
                               onChange={e => setDeptSearch(e.target.value)}
                               autoFocus
                             />
-                            <div className="max-h-[160px] overflow-y-auto space-y-0.5">
+                            <div className="max-h-[160px] overflow-y-auto space-y-0.5 scrollbar-thin">
                               {filteredDepts.length === 0 ? (
                                 <div className="text-xs text-muted-foreground text-center py-2">无匹配部门</div>
                               ) : (
@@ -1138,12 +1139,15 @@ export default function AdminPage() {
                                       type="button"
                                       className="w-full text-left px-2.5 py-1.5 rounded text-sm hover:bg-accent flex items-center justify-between"
                                       onClick={() => {
+                                        if (deptSelectLockRef.current) return;
+                                        deptSelectLockRef.current = true;
                                         setPrizeForm(prev => ({
                                           ...prev,
                                           deptQuotas: { ...prev.deptQuotas, [dept]: 1 }
                                         }));
                                         setDeptSearch("");
                                         setDeptPopoverOpen(false);
+                                        setTimeout(() => { deptSelectLockRef.current = false; }, 300);
                                       }}
                                     >
                                       <span>{dept}</span>
@@ -1160,7 +1164,7 @@ export default function AdminPage() {
                       {/* 总中奖人数汇总 */}
                       {hasQuotas && (
                         <div className="pt-2 border-t flex items-center justify-between">
-                          <span className="text-sm font-medium">总中奖人数</span>
+                          <span className="text-sm font-medium">部门配额合计</span>
                           <Badge variant="secondary" className="text-base px-3 py-1">{totalQuota} 人</Badge>
                         </div>
                       )}
@@ -1201,7 +1205,7 @@ export default function AdminPage() {
                         return (
                           <div className="text-xs text-muted-foreground">
                             部门配额已占 <span className="text-foreground font-medium">{quotaSum}</span> 人
-                            {leftover > 0 && <>，剩余 <span className="text-foreground font-medium">{leftover}</span> 人随机抽取</>}
+                            {leftover > 0 && <>，剩余 <span className="text-foreground font-medium">{leftover}</span> 个名额将在全体参与者中随机抽取</>}
                             {leftover < 0 && <span className="text-amber-500"> — 保存时将自动调整为 {quotaSum} 人</span>}
                             {leftover === 0 && <span className="text-green-500"> — 已分配完毕</span>}
                           </div>
