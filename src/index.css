@@ -92,8 +92,8 @@
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --border: oklch(1 0 0 / 7%);
+  --input: oklch(1 0 0 / 10%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
@@ -117,6 +117,41 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ===== View Transitions 主题切换动画 ===== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+}
+
+::view-transition-old(root) {
+  animation-name: theme-out;
+}
+::view-transition-new(root) {
+  animation-name: theme-in;
+}
+
+@keyframes theme-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes theme-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* dark 模式下弱化表格线条，避免切换时突兀 */
+.dark table,
+.dark [role="table"],
+.dark .border {
+  border-color: oklch(1 0 0 / 6%);
+}
+.dark td,
+.dark th {
+  border-color: oklch(1 0 0 / 5%);
 }
 
 @keyframes shimmer {

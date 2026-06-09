@@ -18,7 +18,6 @@ import {
   ShieldAlert, MonitorPlay, LogOut,
   Plus, Pencil, Search, Sun, Moon
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { useTheme } from "@/contexts/ThemeContext";
 import { SAMPLE_CSV } from "@/assets/sample";
@@ -187,17 +186,14 @@ export default function AdminPage() {
 
     const prizeNameMap = new Map(prizes.map(p => [p.id, p.name]));
     const sortedWinners = [...winners].sort((a, b) => a.wonAt - b.wonAt);
-    const maxRows = 60;
-    const truncated = sortedWinners.length > maxRows;
-    const rows = sortedWinners.slice(0, maxRows);
+    const rows = sortedWinners;
 
     const width = 1080;
     const rowHeight = 48;
     const headerHeight = 260;
     const footerHeight = 80;
     const tableHeaderHeight = 56;
-    const extraNoteHeight = truncated ? 32 : 0;
-    const height = Math.min(4000, headerHeight + tableHeaderHeight + rows.length * rowHeight + extraNoteHeight + footerHeight);
+    const height = headerHeight + tableHeaderHeight + rows.length * rowHeight + footerHeight;
 
     const canvas = document.createElement("canvas");
     const scale = Math.min(2, window.devicePixelRatio || 1);
@@ -246,13 +242,15 @@ export default function AdminPage() {
     const colXs = {
       idx: 72,
       name: 150,
-      dept: 360,
-      prize: 640,
-      time: 820,
+      dept: 280,
+      phone: 420,
+      prize: 560,
+      time: 740,
     };
     ctx.fillText("序号", colXs.idx, tableTop + 34);
     ctx.fillText("姓名", colXs.name, tableTop + 34);
     ctx.fillText("部门", colXs.dept, tableTop + 34);
+    ctx.fillText("手机号", colXs.phone, tableTop + 34);
     ctx.fillText("奖项", colXs.prize, tableTop + 34);
     ctx.fillText("时间", colXs.time, tableTop + 34);
 
@@ -267,6 +265,7 @@ export default function AdminPage() {
       ctx.fillText(w.name, colXs.name, y + 30);
       ctx.fillStyle = "rgba(255,255,255,0.8)";
       ctx.fillText(w.dept || "-", colXs.dept, y + 30);
+      ctx.fillText(w.phone || "-", colXs.phone, y + 30);
       ctx.fillStyle = "#f5d76e";
       ctx.fillText(prizeNameMap.get(w.prizeId) || "-", colXs.prize, y + 30);
       ctx.fillStyle = "rgba(255,255,255,0.7)";
@@ -274,11 +273,6 @@ export default function AdminPage() {
     });
 
     let footerTop = tableTop + tableHeaderHeight + rows.length * rowHeight;
-    if (truncated) {
-      ctx.fillStyle = "rgba(255,255,255,0.6)";
-      ctx.fillText(`仅导出前 ${maxRows} 条记录`, 64, footerTop + 22);
-      footerTop += extraNoteHeight;
-    }
 
     ctx.strokeStyle = "rgba(255,215,0,0.25)";
     ctx.lineWidth = 1;
@@ -515,18 +509,10 @@ export default function AdminPage() {
         </div>
         <div className="flex items-center gap-3">
 
-           <Button variant="ghost" size="icon" onClick={toggleTheme} title="切换主题" className="w-8 h-8 overflow-hidden">
-             <AnimatePresence mode="wait" initial={false}>
-               <motion.div
-                 key={theme}
-                 initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                 animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                 exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                 transition={{ duration: 0.3, ease: "easeInOut" }}
-               >
-                 {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-               </motion.div>
-             </AnimatePresence>
+           <Button variant="ghost" size="icon" onClick={toggleTheme} title="切换主题" className="w-8 h-8 group">
+             <span className="[&>svg]:transition-transform [&>svg]:duration-300 group-hover:[&>svg]:rotate-12">
+               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+             </span>
            </Button>
            <Button variant="outline" size="sm" asChild>
              <a href="#/" target="_blank"><MonitorPlay className="w-4 h-4 mr-2"/> 打开大屏端</a>
@@ -841,12 +827,13 @@ export default function AdminPage() {
                </div>
                <div className="max-h-[55vh] overflow-auto scrollbar-thin">
                <Table>
-                 <TableHeader><TableRow><TableHead>姓名</TableHead><TableHead>部门</TableHead><TableHead>奖项</TableHead><TableHead>时间</TableHead></TableRow></TableHeader>
+                 <TableHeader><TableRow><TableHead>姓名</TableHead><TableHead>部门</TableHead><TableHead>手机号</TableHead><TableHead>奖项</TableHead><TableHead>时间</TableHead></TableRow></TableHeader>
                  <TableBody>
                    {winners.map(w => (
                      <TableRow key={w.id}>
                        <TableCell className="font-medium">{w.name}</TableCell>
                        <TableCell>{w.dept}</TableCell>
+                       <TableCell className="text-xs text-muted-foreground font-mono">{w.phone || '-'}</TableCell>
                        <TableCell><Badge variant="outline">{prizes.find(p=>p.id===w.prizeId)?.name}</Badge></TableCell>
                        <TableCell className="font-mono text-muted-foreground">{new Date(w.wonAt).toLocaleTimeString()}</TableCell>
                      </TableRow>
