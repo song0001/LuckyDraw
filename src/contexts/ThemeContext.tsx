@@ -30,19 +30,21 @@ interface ThemeProviderProps {
  * 浏览器原生 GPU 加速，零 JS 动画代码
  */
 function switchThemeSmooth(current: Theme, next: Theme) {
+  if (typeof document === "undefined") return;
+
+  const docEl = document.documentElement;
+
   // 不支持 View Transitions 的浏览器直接切
-  if (!("startViewTransition" in document)) {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(next);
+  if (typeof (document as any).startViewTransition !== "function") {
+    docEl.classList.remove("light", "dark");
+    docEl.classList.add(next);
     return;
   }
 
-  const doc = document.documentElement;
-
   // @ts-ignore — View Transitions API
-  doc.startViewTransition(() => {
-    doc.classList.remove("light", "dark");
-    doc.classList.add(next);
+  docEl.startViewTransition(() => {
+    docEl.classList.remove("light", "dark");
+    docEl.classList.add(next);
   });
 }
 
