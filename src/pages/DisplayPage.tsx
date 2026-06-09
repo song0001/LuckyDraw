@@ -38,7 +38,7 @@ export default function DisplayPage() {
   }, [settings.title]);
 
   return (
-    <div className="w-full h-screen overflow-hidden bg-black text-white font-sans">
+    <div className="w-full h-screen overflow-hidden font-sans">
       <RollingBoard 
         isRolling={isRolling} 
         candidates={candidates} 

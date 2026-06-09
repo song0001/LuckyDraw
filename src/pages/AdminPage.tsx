@@ -16,9 +16,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import {
   Download, Upload, Trash, Play, Square,
   ShieldAlert, MonitorPlay, LogOut,
-  Plus, Pencil, Search
+  Plus, Pencil, Search, Sun, Moon
 } from "lucide-react";
 import { toast } from "sonner";
+import { useTheme } from "@/contexts/ThemeContext";
 import { SAMPLE_CSV } from "@/assets/sample";
 import { cn } from "@/lib/utils";
 
@@ -35,6 +36,8 @@ export default function AdminPage() {
     startRolling, stopRolling,
     addParticipant, updateParticipant, removeParticipant
   } = useLotteryStore();
+
+  const { theme, toggleTheme } = useTheme();
 
   const [csvText, setCsvText] = useState("");
 
@@ -64,7 +67,7 @@ export default function AdminPage() {
   // Person Edit State
   const [editingPerson, setEditingPerson] = useState<any>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [editForm, setEditForm] = useState({ name: "", dept: "", mustWinPrizeId: "none", bannedPrizes: [] as string[], weight: 1 });
+  const [editForm, setEditForm] = useState({ name: "", dept: "", phone: "", mustWinPrizeId: "none", bannedPrizes: [] as string[], weight: 1 });
 
   // Prize Edit State
   const [editingPrize, setEditingPrize] = useState<any>(null);
@@ -293,7 +296,7 @@ export default function AdminPage() {
 
   const openAddDialog = () => {
     setEditingPerson(null);
-    setEditForm({ name: "", dept: "", mustWinPrizeId: "none", bannedPrizes: [], weight: 1 });
+    setEditForm({ name: "", dept: "", phone: "", mustWinPrizeId: "none", bannedPrizes: [], weight: 1 });
     setIsDialogOpen(true);
   };
 
@@ -302,6 +305,7 @@ export default function AdminPage() {
     setEditForm({
         name: person.name,
         dept: person.dept,
+        phone: person.phone || "",
         mustWinPrizeId: person.mustWinPrizeId || "none",
         bannedPrizes: person.bannedPrizes || [],
         weight: person.weight
@@ -435,7 +439,7 @@ export default function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <Card className="w-[400px]">
           <CardHeader className="text-center">
             <CardTitle>后台管理系统</CardTitle>
@@ -468,7 +472,7 @@ export default function AdminPage() {
 
   const currentPrize = prizes.find(p => p.id === currentPrizeId);
   const filteredParticipants = participants.filter(p => 
-    p.name.includes(searchTerm) || p.dept.includes(searchTerm)
+    p.name.includes(searchTerm) || p.dept.includes(searchTerm) || (p.phone || '').includes(searchTerm)
   );
   const winnerIds = new Set(winners.map(w => w.id));
   const validPool = participants.filter(p => !winnerIds.has(p.id) && (currentPrizeId ? !(p.bannedPrizes || []).includes(currentPrizeId) : true));
@@ -508,8 +512,11 @@ export default function AdminPage() {
           <ShieldAlert className="w-5 h-5 text-primary"/>
           {settings.title}
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
 
+           <Button variant="ghost" size="icon" onClick={toggleTheme} title="切换主题" className="w-8 h-8">
+             {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+           </Button>
            <Button variant="outline" size="sm" asChild>
              <a href="#/" target="_blank"><MonitorPlay className="w-4 h-4 mr-2"/> 打开大屏端</a>
            </Button>
@@ -691,7 +698,7 @@ export default function AdminPage() {
                     <div className="flex gap-2 items-center flex-1">
                         <div className="relative w-full max-w-sm">
                             <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                            <Input placeholder="搜索姓名或部门..." className="pl-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
+                            <Input placeholder="搜索姓名、部门或手机号..." className="pl-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
                         </div>
                         <Button onClick={openAddDialog}><Plus className="w-4 h-4 mr-2"/>添加人员</Button>
                     </div>
@@ -720,6 +727,7 @@ export default function AdminPage() {
                             <TableRow>
                                 <TableHead>姓名</TableHead>
                                 <TableHead>部门</TableHead>
+                                <TableHead>手机号</TableHead>
                                 {controlledModeUnlocked && (
                                   <>
                                     <TableHead className="text-center w-[120px]">必中设置</TableHead>
@@ -733,7 +741,7 @@ export default function AdminPage() {
                         <TableBody>
                             {filteredParticipants.length === 0 ? (
                                 <TableRow>
-                                    <TableCell colSpan={controlledModeUnlocked ? 6 : 3} className="text-center py-8 text-muted-foreground">
+                                    <TableCell colSpan={controlledModeUnlocked ? 7 : 4} className="text-center py-8 text-muted-foreground">
                                         无匹配数据，请先导入或添加人员
                                     </TableCell>
                                 </TableRow>
@@ -744,6 +752,7 @@ export default function AdminPage() {
                                         <TableRow key={p.id}>
                                             <TableCell className="font-medium">{p.name}</TableCell>
                                             <TableCell>{p.dept}</TableCell>
+                                            <TableCell className="text-xs text-muted-foreground font-mono">{p.phone || '-'}</TableCell>
                                             {controlledModeUnlocked && (
                                               <>
                                                 <TableCell className="text-center">
@@ -955,6 +964,10 @@ export default function AdminPage() {
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label className="text-right">部门</Label>
                     <Input className="col-span-3" value={editForm.dept} onChange={e => setEditForm({...editForm, dept: e.target.value})} />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                    <Label className="text-right">手机号</Label>
+                    <Input className="col-span-3" value={editForm.phone} onChange={e => setEditForm({...editForm, phone: e.target.value})} />
                 </div>
                 {controlledModeUnlocked && (
                   <>

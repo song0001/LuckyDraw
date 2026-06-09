@@ -304,21 +304,21 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
         className="absolute inset-0 bg-cover bg-center z-0" 
         style={{ backgroundImage: `url(${bgImg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-tr from-black via-zinc-950/98 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-white via-stone-100/98 to-white dark:from-black dark:via-zinc-950/98 dark:to-black" />
         
         {/* 2027 Neo-Luxury Ambient Aura Lighting */}
-        <div className="absolute top-[10%] left-[5%] w-[60vw] h-[60vw] rounded-full bg-yellow-500/5 blur-[150px] animate-[pulse_12s_infinite_alternate] pointer-events-none" />
-        <div className="absolute bottom-[5%] right-[5%] w-[65vw] h-[65vw] rounded-full bg-amber-500/5 blur-[160px] animate-[pulse_15s_infinite_alternate] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] rounded-full bg-red-950/15 blur-[120px] animate-[pulse_9s_infinite] pointer-events-none" />
+        <div className="absolute top-[10%] left-[5%] w-[60vw] h-[60vw] rounded-full bg-amber-300/10 dark:bg-yellow-500/5 blur-[150px] animate-[pulse_12s_infinite_alternate] pointer-events-none" />
+        <div className="absolute bottom-[5%] right-[5%] w-[65vw] h-[65vw] rounded-full bg-orange-300/10 dark:bg-amber-500/5 blur-[160px] animate-[pulse_15s_infinite_alternate] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] rounded-full bg-rose-200/20 dark:bg-red-950/15 blur-[120px] animate-[pulse_9s_infinite] pointer-events-none" />
 
         {/* Ambient Gold Particle Flow (CSS-only ultra-smooth sparkles) */}
-        <div className="absolute inset-0 overflow-hidden opacity-40 pointer-events-none z-0">
-          <div className="absolute w-2 h-2 rounded-full bg-yellow-500/40 blur-[1px] animate-[sparkle_10s_infinite] top-[90%] left-[15%]" />
-          <div className="absolute w-3.5 h-3.5 rounded-full bg-amber-400/25 blur-[2.5px] animate-[sparkle_15s_infinite] top-[90%] left-[75%]" style={{ animationDelay: '2.5s' }} />
-          <div className="absolute w-1.5 h-1.5 rounded-full bg-yellow-300/50 blur-[1px] animate-[sparkle_8s_infinite] top-[90%] left-[35%]" style={{ animationDelay: '4.5s' }} />
-          <div className="absolute w-2.5 h-2.5 rounded-full bg-yellow-500/35 blur-[1.5px] animate-[sparkle_12s_infinite] top-[90%] left-[55%]" style={{ animationDelay: '1.2s' }} />
-          <div className="absolute w-2 h-2 rounded-full bg-amber-500/45 blur-[1px] animate-[sparkle_18s_infinite] top-[90%] left-[85%]" style={{ animationDelay: '6s' }} />
-          <div className="absolute w-3 h-3 rounded-full bg-yellow-400/30 blur-[2px] animate-[sparkle_14s_infinite] top-[90%] left-[25%]" style={{ animationDelay: '8s' }} />
+        <div className="absolute inset-0 overflow-hidden opacity-60 dark:opacity-40 pointer-events-none z-0">
+          <div className="absolute w-2 h-2 rounded-full bg-amber-500/50 dark:bg-yellow-500/40 blur-[1px] animate-[sparkle_10s_infinite] top-[90%] left-[15%]" />
+          <div className="absolute w-3.5 h-3.5 rounded-full bg-amber-500/35 dark:bg-amber-400/25 blur-[2.5px] animate-[sparkle_15s_infinite] top-[90%] left-[75%]" style={{ animationDelay: '2.5s' }} />
+          <div className="absolute w-1.5 h-1.5 rounded-full bg-amber-600/60 dark:bg-yellow-300/50 blur-[1px] animate-[sparkle_8s_infinite] top-[90%] left-[35%]" style={{ animationDelay: '4.5s' }} />
+          <div className="absolute w-2.5 h-2.5 rounded-full bg-amber-500/45 dark:bg-yellow-500/35 blur-[1.5px] animate-[sparkle_12s_infinite] top-[90%] left-[55%]" style={{ animationDelay: '1.2s' }} />
+          <div className="absolute w-2 h-2 rounded-full bg-amber-600/55 dark:bg-amber-500/45 blur-[1px] animate-[sparkle_18s_infinite] top-[90%] left-[85%]" style={{ animationDelay: '6s' }} />
+          <div className="absolute w-3 h-3 rounded-full bg-amber-500/40 dark:bg-yellow-400/30 blur-[2px] animate-[sparkle_14s_infinite] top-[90%] left-[25%]" style={{ animationDelay: '8s' }} />
         </div>
       </div>
 
@@ -337,7 +337,7 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
               className="flex flex-col items-center justify-center text-center p-8 relative"
             >
               {/* Golden circular backdrop glow */}
-              <div className="absolute w-[500px] h-[500px] bg-gradient-to-tr from-yellow-500/10 to-transparent blur-[120px] rounded-full pointer-events-none -z-10" />
+              <div className="absolute w-[500px] h-[500px] bg-gradient-to-tr from-amber-400/20 dark:from-yellow-500/10 to-transparent blur-[120px] rounded-full pointer-events-none -z-10" />
 
               {settings.logo && (
                 <motion.div
@@ -361,14 +361,14 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
                 transition={{ delay: 0.4 }}
                 className="relative"
               >
-                <h2 className="text-yellow-500/90 text-2xl md:text-4xl font-cinzel tracking-[0.4em] uppercase mb-4 drop-shadow-[0_0_15px_rgba(234,179,8,0.25)] font-bold">
+                <h2 className="text-amber-700/80 dark:text-yellow-500/90 text-2xl md:text-4xl font-cinzel tracking-[0.4em] uppercase mb-4 drop-shadow-[0_0_15px_rgba(234,179,8,0.25)] font-bold">
                   {settings.welcomeSubtitle || "Welcome"}
                 </h2>
                 
                 {/* Horizontal Divider Line */}
-                <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-yellow-500/60 to-transparent mx-auto my-6" />
+                <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-amber-600/60 dark:via-yellow-500/60 to-transparent mx-auto my-6" />
 
-                <h1 className="text-6xl md:text-9xl font-black text-white font-cinzel tracking-wider drop-shadow-[0_0_40px_rgba(255,215,0,0.5)] leading-none select-none bg-gradient-to-b from-white via-white to-amber-200 bg-clip-text text-transparent py-2">
+                <h1 className="text-6xl md:text-9xl font-black font-cinzel tracking-wider drop-shadow-[0_0_40px_rgba(255,215,0,0.5)] leading-none select-none bg-gradient-to-b from-gray-900 via-gray-800 to-amber-700 dark:from-white dark:via-white dark:to-amber-200 bg-clip-text text-transparent py-2">
                   {settings.welcomeTitle || "ANNUAL PARTY"}
                 </h1>
               </motion.div>
@@ -383,32 +383,32 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full max-w-7xl px-8 flex flex-col items-center"
+              className="w-full max-w-7xl px-8 flex flex-col items-center justify-center flex-1"
             >
               <motion.h2
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-yellow-500 text-3xl md:text-5xl font-cinzel tracking-[0.3em] uppercase mb-12 drop-shadow-[0_0_20px_rgba(255,215,0,0.5)]"
+                className="text-amber-600 dark:text-yellow-500 text-3xl md:text-5xl font-cinzel tracking-[0.3em] uppercase mb-12 drop-shadow-[0_0_20px_rgba(255,215,0,0.5)]"
               >
                 {settings.prizePageTitle || "今日奖项"}
               </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+              <div className="flex flex-wrap justify-center gap-8 w-full">
                 {prizes.map((prize, idx) => (
                   <motion.div
                     key={prize.id}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + idx * 0.1, type: "spring" }}
-                    className="relative group"
+                    className="relative group w-full max-w-md"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/30 to-red-900/40 blur-2xl rounded-3xl group-hover:blur-3xl transition-all" />
-                    <div className="relative bg-black/60 backdrop-blur-md border-2 border-yellow-500/40 p-8 rounded-3xl flex flex-col items-center justify-center text-center hover:border-yellow-500/80 transition-all shadow-[0_0_40px_rgba(255,215,0,0.15)] min-h-[280px]">
-                      <div className="text-4xl md:text-5xl font-bold text-white font-cinzel mb-3 drop-shadow-lg">{prize.name}</div>
-                      <div className="text-yellow-400 text-2xl font-bold mb-4">× {prize.count} 名</div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400/15 dark:from-yellow-600/30 to-red-300/15 dark:to-red-900/40 blur-2xl rounded-3xl group-hover:blur-3xl transition-all" />
+                    <div className="relative bg-white/70 dark:bg-black/60 backdrop-blur-md border-2 border-amber-400/50 dark:border-yellow-500/40 p-8 rounded-3xl flex flex-col items-center justify-center text-center hover:border-amber-500 dark:hover:border-yellow-500/80 transition-all shadow-[0_4px_30px_rgba(180,130,0,0.12)] dark:shadow-[0_0_40px_rgba(255,215,0,0.15)] min-h-[280px]">
+                      <div className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white font-cinzel mb-3 drop-shadow-lg">{prize.name}</div>
+                      <div className="text-amber-700 dark:text-yellow-400 text-2xl font-bold mb-4">× {prize.count} 名</div>
                       {prize.description && (
-                        <div className="mt-4 pt-4 border-t-2 border-yellow-500/30 w-full">
-                          <div className="text-yellow-100 text-xl md:text-2xl font-medium drop-shadow-md">
+                        <div className="mt-4 pt-4 border-t-2 border-amber-400/40 dark:border-yellow-500/30 w-full">
+                          <div className="text-amber-800 dark:text-yellow-100 text-xl md:text-2xl font-medium drop-shadow-md">
                             {prize.description}
                           </div>
                         </div>
@@ -437,16 +437,16 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
 
               {/* Title / Prize Info (置顶且固定，防止滚动遮挡) */}
               <div className="text-center shrink-0">
-                <h2 className="text-gold-400 text-xl md:text-2xl font-cinzel tracking-[0.3em] uppercase mb-1 text-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] font-semibold">
+                <h2 className="text-xl md:text-2xl font-cinzel tracking-[0.3em] uppercase mb-1 text-amber-600 dark:text-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] font-semibold">
                   {settings.title}
                 </h2>
-                <h1 className="text-5xl md:text-7xl font-cinzel font-black text-white drop-shadow-[0_0_30px_rgba(255,215,0,0.4)] tracking-wide">
+                <h1 className="text-5xl md:text-7xl font-cinzel font-black text-gray-900 dark:text-white drop-shadow-[0_0_30px_rgba(255,215,0,0.4)] tracking-wide">
                   {currentPrize?.name || "Ready"}
                 </h1>
-                <div className="mt-3 flex items-center justify-center gap-2 text-white/90">
-                  <span className="text-base font-sans tracking-wide">本轮抽取: <span className="text-yellow-400 font-extrabold text-2xl drop-shadow-[0_0_10px_rgba(250,204,21,0.5)] font-mono">{currentPrize?.count}</span> 人</span>
+                <div className="mt-3 flex items-center justify-center gap-2 text-gray-700 dark:text-white/90">
+                  <span className="text-base font-sans tracking-wide">本轮抽取: <span className="text-amber-600 dark:text-yellow-400 font-extrabold text-2xl drop-shadow-[0_0_10px_rgba(250,204,21,0.5)] font-mono">{currentPrize?.count}</span> 人</span>
                 </div>
-                <div className="w-64 h-[1px] bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent mx-auto mt-4 blur-[0.5px]" />
+                <div className="w-64 h-[1px] bg-gradient-to-r from-transparent via-amber-500/40 dark:via-yellow-500/40 to-transparent mx-auto mt-4 blur-[0.5px]" />
               </div>
 
               {/* Rolling Area / Winner Display (中奖者列表滚动容器) */}
@@ -484,14 +484,14 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
                                   transition={{ delay: idx * 0.03, type: "spring" }}
                                   className="relative group"
                                 >
-                                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-red-950/20 to-yellow-600/5 blur-2xl rounded-2xl group-hover:blur-3xl transition-all duration-500" />
-                                  <div className={`relative bg-zinc-950/65 backdrop-blur-xl border border-yellow-500/25 ${winnerCardPadding} rounded-2xl flex flex-col items-center justify-center text-center hover:border-yellow-500/80 transition-all duration-500 shadow-[0_4px_20px_rgba(0,0,0,0.6),0_0_15px_rgba(234,179,8,0.05)] hover:shadow-[0_20px_40px_rgba(234,179,8,0.25),0_0_30px_rgba(234,179,8,0.1)] hover:-translate-y-2.5 overflow-hidden group cursor-default min-h-[120px]`}>
+                                  <div className="absolute inset-0 bg-gradient-to-br from-amber-300/15 dark:from-yellow-500/10 via-rose-200/15 dark:via-red-950/20 to-amber-400/10 dark:to-yellow-600/5 blur-2xl rounded-2xl group-hover:blur-3xl transition-all duration-500" />
+                                  <div className={`relative bg-white/75 dark:bg-zinc-950/65 backdrop-blur-xl border border-amber-300/40 dark:border-yellow-500/25 ${winnerCardPadding} rounded-2xl flex flex-col items-center justify-center text-center hover:border-amber-500 dark:hover:border-yellow-500/80 transition-all duration-500 shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.6),0_0_15px_rgba(234,179,8,0.05)] hover:shadow-[0_20px_40px_rgba(180,130,0,0.18)] dark:hover:shadow-[0_20px_40px_rgba(234,179,8,0.25),0_0_30px_rgba(234,179,8,0.1)] hover:-translate-y-2.5 overflow-hidden group cursor-default min-h-[120px]`}>
                                     {/* Shimmer sweep effect */}
-                                    <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-yellow-500/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, transparent 30%, rgba(234,179,8,0.1) 40%, rgba(234,179,8,0.15) 50%, rgba(234,179,8,0.1) 60%, transparent 70%)', backgroundSize: '200% 100%' }} />
+                                    <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-amber-500/8 dark:via-yellow-500/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, transparent 30%, rgba(180,130,0,0.08) 40%, rgba(180,130,0,0.12) 50%, rgba(180,130,0,0.08) 60%, transparent 70%)', backgroundSize: '200% 100%' }} />
                                     
-                                    <div className={`${winnerNameClass} font-bold text-white font-cinzel drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight break-words tracking-wide group-hover:text-yellow-100 transition-colors`}>{winner.name}</div>
+                                    <div className={`${winnerNameClass} font-bold text-gray-900 dark:text-white font-cinzel drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight break-words tracking-wide group-hover:text-amber-700 dark:group-hover:text-yellow-100 transition-colors`}>{winner.name}</div>
                                     {settings.showDept && winner.dept && (
-                                      <div className="text-yellow-400/90 text-sm md:text-base mt-2.5 font-medium drop-shadow-md tracking-wider">{winner.dept}</div>
+                                      <div className="text-amber-700/90 dark:text-yellow-400/90 text-sm md:text-base mt-2.5 font-medium drop-shadow-md tracking-wider">{winner.dept}</div>
                                     )}
                                   </div>
                                 </motion.div>
@@ -512,14 +512,14 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
                               transition={{ delay: idx * 0.05, type: "spring" }}
                               className="relative group"
                             >
-                              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-red-950/20 to-yellow-600/5 blur-2xl rounded-2xl group-hover:blur-3xl transition-all duration-500" />
-                              <div className={`relative bg-zinc-950/65 backdrop-blur-xl border border-yellow-500/25 ${winnerCardPadding} rounded-2xl flex flex-col items-center justify-center text-center hover:border-yellow-500/80 transition-all duration-500 shadow-[0_4px_20px_rgba(0,0,0,0.6),0_0_15px_rgba(234,179,8,0.05)] hover:shadow-[0_20px_40px_rgba(234,179,8,0.25),0_0_30px_rgba(234,179,8,0.1)] hover:-translate-y-2.5 overflow-hidden group cursor-default min-h-[120px]`}>
+                              <div className="absolute inset-0 bg-gradient-to-br from-amber-300/15 dark:from-yellow-500/10 via-rose-200/15 dark:via-red-950/20 to-amber-400/10 dark:to-yellow-600/5 blur-2xl rounded-2xl group-hover:blur-3xl transition-all duration-500" />
+                              <div className={`relative bg-white/75 dark:bg-zinc-950/65 backdrop-blur-xl border border-amber-300/40 dark:border-yellow-500/25 ${winnerCardPadding} rounded-2xl flex flex-col items-center justify-center text-center hover:border-amber-500 dark:hover:border-yellow-500/80 transition-all duration-500 shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.6),0_0_15px_rgba(234,179,8,0.05)] hover:shadow-[0_20px_40px_rgba(180,130,0,0.18)] dark:hover:shadow-[0_20px_40px_rgba(234,179,8,0.25),0_0_30px_rgba(234,179,8,0.1)] hover:-translate-y-2.5 overflow-hidden group cursor-default min-h-[120px]`}>
                                 {/* Shimmer sweep effect */}
-                                <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-yellow-500/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, transparent 30%, rgba(234,179,8,0.1) 40%, rgba(234,179,8,0.15) 50%, rgba(234,179,8,0.1) 60%, transparent 70%)', backgroundSize: '200% 100%' }} />
+                                <div className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-amber-500/8 dark:via-yellow-500/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" style={{ backgroundImage: 'linear-gradient(120deg, transparent 30%, rgba(180,130,0,0.08) 40%, rgba(180,130,0,0.12) 50%, rgba(180,130,0,0.08) 60%, transparent 70%)', backgroundSize: '200% 100%' }} />
                                 
-                                <div className={`${winnerNameClass} font-bold text-white font-cinzel drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight break-words tracking-wide group-hover:text-yellow-100 transition-colors`}>{winner.name}</div>
+                                <div className={`${winnerNameClass} font-bold text-gray-900 dark:text-white font-cinzel drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-tight break-words tracking-wide group-hover:text-amber-700 dark:group-hover:text-yellow-100 transition-colors`}>{winner.name}</div>
                                 {settings.showDept && winner.dept && (
-                                  <div className="text-yellow-400/90 text-sm md:text-base mt-2.5 font-medium drop-shadow-md tracking-wider">{winner.dept}</div>
+                                  <div className="text-amber-700/90 dark:text-yellow-400/90 text-sm md:text-base mt-2.5 font-medium drop-shadow-md tracking-wider">{winner.dept}</div>
                                 )}
                               </div>
                             </motion.div>
@@ -534,15 +534,15 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
                       className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full opacity-80"
                     >
                       {displayNames.slice(0, 12).map((item, i) => (
-                        <div key={i} className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-lg flex flex-col items-center justify-center min-h-[100px]">
+                        <div key={i} className="bg-black/5 dark:bg-white/5 backdrop-blur-sm border border-black/10 dark:border-white/10 p-6 rounded-lg flex flex-col items-center justify-center min-h-[100px]">
                            <span className={cn(
-                             "text-3xl font-bold text-white/90 font-mono transition-all duration-75",
+                             "text-3xl font-bold text-gray-900/90 dark:text-white/90 font-mono transition-all duration-75",
                              isAnimating && "blur-[1px] scale-105"
                            )}>
                              {item.name}
                            </span>
                            {settings.showDept && item.dept && (
-                             <span className="text-white/60 text-xs mt-1.5 block font-sans">{item.dept}</span>
+                             <span className="text-gray-500 dark:text-white/60 text-xs mt-1.5 block font-sans">{item.dept}</span>
                            )}
                         </div>
                       ))}
@@ -559,7 +559,7 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
                     <button
                       type="button"
                       onClick={() => setCurrentPage(prev => Math.max(prev - 1, 0))}
-                      className="absolute left-6 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500/20 text-yellow-500 hover:text-yellow-400 border border-yellow-500/40 hover:border-yellow-500 w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur shadow-[0_0_15px_rgba(255,215,0,0.15)] hover:shadow-[0_0_25px_rgba(255,215,0,0.45)] group cursor-pointer"
+                      className="absolute left-6 top-1/2 -translate-y-1/2 z-30 bg-white/70 dark:bg-black/60 hover:bg-amber-100 dark:hover:bg-yellow-500/20 text-amber-600 dark:text-yellow-500 hover:text-amber-700 dark:hover:text-yellow-400 border border-amber-400/50 dark:border-yellow-500/40 hover:border-amber-500 dark:hover:border-yellow-500 w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur group cursor-pointer"
                     >
                       <ChevronLeft className="w-8 h-8 group-hover:scale-110 transition-transform" />
                     </button>
@@ -570,14 +570,14 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
                     <button
                       type="button"
                       onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages - 1))}
-                      className="absolute right-6 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500/20 text-yellow-500 hover:text-yellow-400 border border-yellow-500/40 hover:border-yellow-500 w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur shadow-[0_0_15px_rgba(255,215,0,0.15)] hover:shadow-[0_0_25px_rgba(255,215,0,0.45)] group cursor-pointer"
+                      className="absolute right-6 top-1/2 -translate-y-1/2 z-30 bg-white/70 dark:bg-black/60 hover:bg-amber-100 dark:hover:bg-yellow-500/20 text-amber-600 dark:text-yellow-500 hover:text-amber-700 dark:hover:text-yellow-400 border border-amber-400/50 dark:border-yellow-500/40 hover:border-amber-500 dark:hover:border-yellow-500 w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur group cursor-pointer"
                     >
                       <ChevronRight className="w-8 h-8 group-hover:scale-110 transition-transform" />
                     </button>
                   )}
 
                   {/* Bottom Dot Indicators */}
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 bg-black/60 px-5 py-2.5 rounded-full border border-yellow-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 bg-white/70 dark:bg-black/60 px-5 py-2.5 rounded-full border border-amber-400/40 dark:border-yellow-500/30 backdrop-blur-md">
                     {Array.from({ length: totalPages }).map((_, idx) => (
                       <button
                         key={idx}
@@ -586,12 +586,12 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
                         className={cn(
                           "transition-all duration-500 ease-out cursor-pointer h-2.5 rounded-full",
                           idx === currentPage 
-                            ? "bg-gradient-to-r from-yellow-400 to-amber-500 w-8 shadow-[0_0_12px_rgba(250,204,21,0.6)]" 
-                            : "bg-white/20 hover:bg-white/40 w-2.5"
+                            ? "bg-gradient-to-r from-amber-500 to-orange-600 dark:from-yellow-400 dark:to-amber-500 w-8 shadow-[0_0_12px_rgba(200,150,0,0.5)] dark:shadow-[0_0_12px_rgba(250,204,21,0.6)]" 
+                            : "bg-black/15 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/40 w-2.5"
                         )}
                       />
                     ))}
-                    <span className="text-yellow-500/80 text-sm font-mono font-bold ml-2 select-none">
+                    <span className="text-amber-700/80 dark:text-yellow-500/80 text-sm font-mono font-bold ml-2 select-none">
                       {currentPage + 1} / {totalPages}
                     </span>
                   </div>
@@ -615,14 +615,14 @@ export default function RollingBoard({ isRolling, candidates, currentWinners }: 
               }
               document.documentElement.requestFullscreen?.();
             }}
-            className="h-10 w-10 rounded-full bg-white/10 text-white border border-white/20 backdrop-blur hover:bg-white/20 hover:border-white/40 flex items-center justify-center"
+            className="h-10 w-10 rounded-full bg-black/5 dark:bg-white/10 text-gray-700 dark:text-white border border-black/10 dark:border-white/20 backdrop-blur hover:bg-black/10 dark:hover:bg-white/20 hover:border-black/20 dark:hover:border-white/40 flex items-center justify-center"
           >
             <Maximize2 className="h-5 w-5" />
           </button>
           <a
             href="#/admin"
             title="进入后台管理"
-            className="h-10 w-10 rounded-full bg-white/10 text-white border border-white/20 backdrop-blur hover:bg-white/20 hover:border-white/40 flex items-center justify-center"
+            className="h-10 w-10 rounded-full bg-black/5 dark:bg-white/10 text-gray-700 dark:text-white border border-black/10 dark:border-white/20 backdrop-blur hover:bg-black/10 dark:hover:bg-white/20 hover:border-black/20 dark:hover:border-white/40 flex items-center justify-center"
           >
             <Settings className="h-5 w-5" />
           </a>

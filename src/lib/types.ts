@@ -2,6 +2,7 @@ export interface Participant {
   id: string;
   name: string;
   dept: string;
+  phone?: string;
   mustWinPrizeId: string | null; // 内定中特定奖项 ID，null 为无内定
   bannedPrizes: string[];
   weight: number;

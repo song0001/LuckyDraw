@@ -24,7 +24,7 @@ function AppRouter() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark">
+      <ThemeProvider switchable={true}>
         <TooltipProvider>
           <Toaster />
           <AppRouter />

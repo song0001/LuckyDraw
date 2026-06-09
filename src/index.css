@@ -145,10 +145,10 @@
 /* 自定义滚动条样式 */
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  scrollbar-color: rgba(128, 128, 128, 0.3) transparent;
 }
 .scrollbar-thin:hover {
-  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  scrollbar-color: rgba(128, 128, 128, 0.5) transparent;
 }
 .scrollbar-thin::-webkit-scrollbar {
   width: 4px;
@@ -158,10 +158,10 @@
   border-radius: 4px;
 }
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(128, 128, 128, 0.3);
   border-radius: 4px;
 }
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(128, 128, 128, 0.5);
 }
 

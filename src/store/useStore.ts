@@ -103,6 +103,7 @@ export const useLotteryStore = create<LotteryState>()(
               id: nanoid(),
               name: row['姓名'] || row['name'] || 'Unknown',
               dept: row['部门'] || row['dept'] || '',
+              phone: row['手机'] || row['手机号'] || row['phone'] || '',
               mustWinPrizeId: null,
               bannedPrizes: [],
               weight: 1,
