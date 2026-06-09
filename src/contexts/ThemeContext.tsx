@@ -41,6 +41,17 @@ export function ThemeProvider({
     try { localStorage.setItem(THEME_STORAGE_KEY, theme); } catch {}
   }, [theme]);
 
+  // 监听其他标签页的 storage 事件，实现跨窗口主题实时同步
+  React.useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === THEME_STORAGE_KEY && (e.newValue === "light" || e.newValue === "dark")) {
+        setTheme(e.newValue);
+      }
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
   const toggleTheme = () => {
     if (switchable) {
       setTheme((prev) => (prev === "light" ? "dark" : "light"));

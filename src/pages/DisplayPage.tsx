@@ -23,6 +23,24 @@ export default function DisplayPage() {
     return () => clearInterval(timer);
   }, []);
 
+  // 轮询同步主题 (解决跨窗口主题切换不实时更新问题)
+  useEffect(() => {
+    const syncTheme = () => {
+      try {
+        const stored = localStorage.getItem('lucky-theme');
+        const theme = stored === 'light' ? 'light' : 'dark';
+        const root = document.documentElement;
+        if (!root.classList.contains(theme)) {
+          root.classList.remove('light', 'dark');
+          root.classList.add(theme);
+        }
+      } catch {}
+    };
+    syncTheme();
+    const timer = setInterval(syncTheme, 500);
+    return () => clearInterval(timer);
+  }, []);
+
   // 当前奖项信息
   const currentPrize = prizes.find(p => p.id === currentPrizeId);
   const candidates = participants.filter(p => currentPrizeId ? !p.bannedPrizes.includes(currentPrizeId) : true); 
