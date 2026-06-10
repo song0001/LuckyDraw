@@ -530,7 +530,7 @@ export default function AdminPage() {
              <a href="#/" target="_blank"><MonitorPlay className="w-4 h-4 mr-2"/> 打开大屏端</a>
            </Button>
            <a
-             href="https://github.com/song0001/LuckyDraw"
+             href="https://github.com/SparkySong/LuckyDraw"
              target="_blank"
              rel="noreferrer"
              className="text-sm text-muted-foreground hover:text-foreground hover:underline"

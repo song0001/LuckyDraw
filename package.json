@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://song0001.github.io/LuckyDraw",
+  "homepage": "https://sparkysong.github.io/LuckyDraw",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
